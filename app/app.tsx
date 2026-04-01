@@ -1,46 +1,50 @@
-import Script from "next/script";
-import Head from "next/head";
-import '../styles/globals.css'; // your global CSS
+// app/app.tsx
+import './globals.css'; // global CSS
+import Script from 'next/script';
+import Head from 'next/head';
+import { Geist, Geist_Mono } from 'next/font/google';
+import React from 'react';
 
-export default function MyApp({ Component, pageProps }) {
+// Google Fonts
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      {/* GA4 Tracking */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-V859Z3W2ZL"
-      />
-      <Script strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-V859Z3W2ZL');
-        `}
-      </Script>
-
-      {/* Default SEO & Open Graph */}
-      <Head>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="description" content="Digital Growth Agency - Outpro.India" />
+        <link rel="icon" href="/favicon.ico" />
         <title>Outpro.India - Digital Solutions</title>
-        <meta name="description" content="Outpro.India empowers businesses digitally with innovative web, UX/UI, and marketing solutions." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Outpro.India - Digital Solutions" />
-        <meta property="og:description" content="Empowering businesses digitally with innovative web, UX/UI, and marketing solutions." />
-        <meta property="og:image" content="https://yourwebsite.com/og-image.jpg" />
-        <meta property="og:url" content="https://www.outpro.india" />
-        <meta property="og:type" content="website" />
+      </head>
+      <body className="min-h-screen scroll-smooth bg-black text-white">
+        {/* GA4 Tracking */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-V859Z3W2ZL"
+        />
+        <Script strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-V859Z3W2ZL');
+          `}
+        </Script>
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Outpro.India - Digital Solutions" />
-        <meta name="twitter:description" content="Empowering businesses digitally with innovative web, UX/UI, and marketing solutions." />
-        <meta name="twitter:image" content="https://yourwebsite.com/og-image.jpg" />
-      </Head>
-
-      {/* Main App */}
-      <Component {...pageProps} />
-    </>
+        {/* Render page content */}
+        {children}
+      </body>
+    </html>
   );
 }
