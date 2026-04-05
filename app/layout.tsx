@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-
-=======
-// app/layout.tsx
-// app/layout.tsx
-// app/layout.tsx
->>>>>>> 6825708 (installed vercel analytics)
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"; // ✅ ADD THIS
 import "./globals.css";
 
 const geistSans = Geist({
@@ -62,6 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
 
         {children}
+
+        {/* ✅ ADD THIS */}
+        <Analytics />
       </body>
     </html>
   );
