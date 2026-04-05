@@ -1,6 +1,3 @@
-
-// app/app.tsx
-// app/app.tsx
 import './globals.css'; // global CSS
 import Script from 'next/script';
 import Head from 'next/head';
