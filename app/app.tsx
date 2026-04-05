@@ -1,3 +1,5 @@
+
+// app/app.tsx
 // app/app.tsx
 import './globals.css'; // global CSS
 import Script from 'next/script';
@@ -42,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        {/* Render page content */}
         {children}
       </body>
     </html>
