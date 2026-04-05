@@ -1,8 +1,8 @@
-import './globals.css'; // global CSS
+import './globals.css';
 import Script from 'next/script';
-import Head from 'next/head';
 import { Geist, Geist_Mono } from 'next/font/google';
 import React from 'react';
+import { Analytics } from "@vercel/analytics/next"; // ✅ added
 
 // Google Fonts
 const geistSans = Geist({
@@ -26,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
         <title>Outpro.India - Digital Solutions</title>
       </head>
+
       <body className="min-h-screen scroll-smooth bg-black text-white">
         {/* GA4 Tracking */}
         <Script
@@ -42,6 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
 
         {children}
+
+        {/* ✅ Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
