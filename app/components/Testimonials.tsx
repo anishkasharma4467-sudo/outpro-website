@@ -1,3 +1,4 @@
+import React from "react";
 export default function Testimonials() {
   return (
     <section className="p-10 text-center">
